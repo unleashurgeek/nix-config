@@ -9,7 +9,7 @@
     inherit (self) outputs;
   in {
     nixosConfigurations.iso = lib.nixosSystem {
-      modules = 
+      modules = with config.flake.modules.nixos;
         [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ];
