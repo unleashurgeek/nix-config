@@ -1,14 +1,17 @@
-{lib, ...}: {
+{lib, config, ...}: {
   options.hosts.nixos = lib.mkOption {
     type = lib.types.lazyAttrsOf (
       lib.types.submodule {
-        options = lib.mkOption {
+        options.module = lib.mkOption {
           type = lib.types.deferredModule;
-          default = {};
         };
       }
     );
   };
 
-  config = { };
+  config.flake = {
+    nixosConfigurations = lib.flip lib.mapAttrs config.hosts.nixos (
+      name: { module }: lib.nixosSystem { modules = [ module ]; }
+    );
+  };
 }
