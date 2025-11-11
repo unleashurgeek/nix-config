@@ -4,8 +4,10 @@
   "nix.serverSettings": {
     "nil": {
       "formatting": {
-        "command": ["/nix/store/3vfia0d4kfz7x2v1q3s7z6czqlfl71h6-alejandra-4.0.0/bin/alejandra"]
-      },
-    },
+        "command": [
+          "/nix/store/3vfia0d4kfz7x2v1q3s7z6czqlfl71h6-alejandra-4.0.0/bin/alejandra"
+        ]
+      }
+    }
   }
 }

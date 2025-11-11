@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.base = {lib, ...}: {
-    time.timeZone = lib.mkDefault "America/Los_Angeles";
+  flake.modules.nixos.base = {
+    time.timeZone = "America/Los_Angeles";
   };
 }
