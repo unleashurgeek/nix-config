@@ -6,6 +6,6 @@
 
   perSystem = {config, ...}: {
     # pre-commit.check.enable = false;
-    make-shells.default.shellHook = config.pre-commit.installationScript;
+    make-shells.default.shellHook = config.pre-commit.shellHook;
   };
 }

@@ -1,12 +1,8 @@
 {
-  flake.modules.nixos.base = {
-    lib,
-    hostConfig,
-    ...
-  }: let
+  flake.modules.nixos.base = {lib, ...}: let
     # Keys are used here by sops-nix before impermanence can make
     # links. Must just use `/persist` keys directly if impermanence.
-    hasPersistDir = hostConfig.preservation.enable;
+    hasPersistDir = true;
   in {
     services.openssh = {
       enable = true;

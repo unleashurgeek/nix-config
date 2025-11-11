@@ -1,8 +1,4 @@
 {
-  hosts.nixos.iso = {
-    primaryUser = "kyle";
-  };
-
   hosts.nixos.iso.module = {
     pkgs,
     lib,
