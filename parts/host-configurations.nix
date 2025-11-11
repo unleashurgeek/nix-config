@@ -16,12 +16,12 @@
         {
           options = config.hosts.options // {
             inherit modules;
-            name = lib.mkOption {
+            name = mkOption {
               default = name;
               readOnly = true;
             };
-            args = lib.mkOption {
-              type = lib.types.lazyAttrsOf lib.types.raw;
+            args = mkOption {
+              type = types.lazyAttrsOf types.raw;
               default = { };
             };
             users = mkOption {
@@ -32,8 +32,9 @@
               );
               default = { };
             };
-            module = lib.mkOption {
-              type = lib.types.deferredModule;
+            module = mkOption {
+              type = types.deferredModule;
+              default = { };
             };
           };
         }

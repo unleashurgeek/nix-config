@@ -1,5 +1,9 @@
-{lib, pkgs, ...}: {
-  hosts.nixos.iso.module = {
+{
+  hosts.nixos.iso = {
+    primaryUser = "kyle";
+  };
+
+  hosts.nixos.iso.module = {pkgs, lib, ...}: {
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     isoImage = {

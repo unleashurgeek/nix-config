@@ -3,6 +3,7 @@
     hostConfig,
     pkgs,
     inputs,
+    lib,
     ...
   }: {
     imports = [
@@ -19,10 +20,10 @@
     ];
 
     # TODO: iterate all users in hostConfig
-    preservation.preserveAt."/persist".users.${hostConfig.primaryUser} = {
+    preservation.preserveAt."/persist".users = lib.mapAttrs (_: _: {
       commonMountOptions = [
         "x-gvfs-hide"
       ];
-    };
+    }) hostConfig.users;
   };
 }
