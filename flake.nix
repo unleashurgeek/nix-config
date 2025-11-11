@@ -40,9 +40,12 @@
     };
   };
 
-  outputs =
-    { flake-parts, import-tree, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } (import-tree [
+  outputs = {
+    flake-parts,
+    import-tree,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} (import-tree [
       ./configurations
       ./hosts
       ./modules
