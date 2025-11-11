@@ -17,12 +17,8 @@
       # `sudo ncdu -x /`
       ncdu
     ];
-  };
 
-  flake.modules.homeManager.base = {
-    hostConfig,
-    ...
-  }: {
+    # TODO: iterate all users in hostConfig
     preservation.preserveAt."/persist".users.${hostConfig.primaryUser} = {
       commonMountOptions = [
         "x-gvfs-hide"

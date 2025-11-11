@@ -36,7 +36,6 @@
     outputs,
     lib,
     pkgs,
-    hostConfig,
     ...
   }: {
     home.sessionVariables.FLAKE = lib.mkDefault "~/.nix-config";
@@ -62,12 +61,5 @@
 
     # Nicely reload system units when changing configs
     systemd.user.startServices = "sd-switch";
-
-    preservation.preserveAt."/persist".users.${hostConfig.primaryUser} = {
-      directories = [
-        ".local/share/nix"
-        ".nix-config"
-      ];
-    };
   };
 }
