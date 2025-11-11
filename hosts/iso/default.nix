@@ -1,4 +1,4 @@
-{config, inputs, lib, ...}: {
+{lib, pkgs, ...}: {
   hosts.nixos.iso.module = {
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
@@ -8,9 +8,33 @@
       squashfsCompression = "zstd -Xcompression-level 3";
     };
 
-    imports = with config.flake.modules.nixos; [
-      "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-      core
+    systemd = {
+      services.sshd.wantedBy = lib.mkForce ["multi-user.target"];
+      targets = {
+        sleep.enable = false;
+        suspend.enable = false;
+        hibernate.enable = false;
+        hybrid-sleep.enable = false;
+      };
+    };
+
+    users.user.kyle = {
+      initialPassword = "bootstrap";
+      hashedPasswordFile = lib.mkForce null;
+    };
+
+    networking = {
+      hostName = "iso";
+      nameservers = [
+        "192.168.1.1"
+      ];
+      wireless.enable = false;
+    };
+    services.resolved.fallbackDns = ["1.1.1.1" "2606:4700:4700::1111"];
+
+    environment.systemPackages = with pkgs; [
+      yq-go
+      sanoid
     ];
   };
 }

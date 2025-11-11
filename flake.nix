@@ -16,9 +16,10 @@
   outputs = {flake-parts, import-tree, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} (
       import-tree [
-        ./parts
+        ./configurations
         ./hosts
         ./modules
+        ./parts
       ]
     );
 }
