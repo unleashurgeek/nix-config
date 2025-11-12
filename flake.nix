@@ -53,7 +53,6 @@
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} (import-tree [
-      ./configurations
       ./hosts
       ./modules
       ./parts
