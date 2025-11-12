@@ -17,6 +17,9 @@
         ouch # file compression / decompression
         ripgrep # grep alternative
         yq-go # yaml parsing / editing
+
+        alejandra # nix formatter
+        nixd # nix lsp
       ]
       ++ lib.map lazy-app.override [
         {pkg = dmidecode;}
