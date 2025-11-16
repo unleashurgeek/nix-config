@@ -7,10 +7,8 @@
     make-shells.default.packages = with pkgs; [
       nh
       go-task
-      nixos-facter
       ssh-to-age
       rsync
-      disko
     ];
   };
 }

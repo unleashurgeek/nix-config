@@ -1,5 +1,9 @@
 {
-  hosts.nixos.iso.module = {lib, ...}: {
+  hosts.nixos.iso.module = {
+    lib,
+    pkgs,
+    ...
+  }: {
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     isoImage = {
@@ -33,6 +37,12 @@
     services.resolved.fallbackDns = [
       "1.1.1.1"
       "2606:4700:4700::1111"
+    ];
+
+    # Utilities necessary for bootstrap but not desired to be included in base
+    environment.systemPackages = with pkgs; [
+      disko
+      nixos-facter
     ];
   };
 }

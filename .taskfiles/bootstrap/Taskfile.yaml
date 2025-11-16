@@ -27,11 +27,9 @@ tasks:
       TEMPDIR:
         sh: mktemp -d
       SSH_PORT: '{{.SSH_PORT | default "22"}}'
-    silent: true
     cmds:
       - mkdir {{.TEMPDIR}}/.nix-config
       - cp -r ./ {{.TEMPDIR}}/.nix-config
-      - echo {{.TEMPDIR}}
       - cd {{.TEMPDIR}}
       - cmd: git branch | grep --color=auto -v 'main' | grep --color=auto -v "$(git branch --show-current)" | xargs git branch -D
         ignore_error: true
@@ -54,4 +52,4 @@ tasks:
       vars:
         - HOSTNAME
     cmds:
-      - disko --mode destroy,format,mount --flake .#nixosConfigurations.{{.HOSTNAME}} --dry-run
+      - sudo disko --mode destroy,format,mount --flake .#{{.HOSTNAME}} --yes-wipe-all-disks
