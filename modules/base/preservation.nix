@@ -14,17 +14,11 @@
     ];
 
     # See https://nixos.org/manual/nixos/stable/#ch-system-state for the OS recommended persistence
+    # - /boot special ESP partition
+    # - /nix, /var/log, /var/lib/nixos, & /var/lib/systemd persistence expected to be managed by zfs
     preservation.preserveAt."/persist" = {
       directories = [
         "/etc/NetworkManager/system-connections"
-
-        # containers
-        "/var/lib/containers"
-        "/var/lib/cni"
-
-        # virtualization
-        "/var/lib/libvirt"
-        "/var/lib/qemu"
 
         # network
         "/var/lib/bluetooth"
