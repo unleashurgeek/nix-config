@@ -20,6 +20,8 @@
 
         alejandra # nix formatter
         nixd # nix lsp
+
+        wakeonlan # necessary for home lab maintenance
       ]
       ++ lib.map lazy-app.override [
         {pkg = dmidecode;}
