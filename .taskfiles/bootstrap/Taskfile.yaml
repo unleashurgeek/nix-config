@@ -13,6 +13,15 @@ tasks:
     cmds:
       - task: ssh
       - task: hardware
+  prepare:
+    desc: Prepares the host for nixos-install command (disk format, move ssh keys, move nix-config) [USER=kyle] [UID=1000]
+    requires:
+      vars:
+        - HOSTNAME
+    silent: true
+    cmds:
+      - task: disk
+      - task: install
   ssh:
     desc: Generate the ssh keys for the remote host [SSH_PORT=22]
     requires:
