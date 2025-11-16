@@ -9,6 +9,7 @@
       go-task
       ssh-to-age
       rsync
+      disko
     ];
   };
 }
