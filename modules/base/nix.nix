@@ -3,6 +3,9 @@
     nixpkgs = {
       # global overlays
       overlays = builtins.attrValues outputs.overlays;
+
+      # Allow installing proprietary software
+      config.allowUnfree = true;
     };
 
     nix = {
@@ -41,9 +44,5 @@
       clean.enable = true;
       clean.extraArgs = "--keep-since 8d --keep 3";
     };
-  };
-
-  flake.modules.homeManager.base = {lib, ...}: {
-    home.sessionVariables.NH_FLAKE = lib.mkDefault "";
   };
 }
