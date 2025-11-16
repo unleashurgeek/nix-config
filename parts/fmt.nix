@@ -41,7 +41,7 @@
     };
 
     pre-commit.settings.hooks.nix-fmt = {
-      enable = true;
+      enable = false;
       entry = lib.getExe self'.formatter;
     };
   };
