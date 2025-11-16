@@ -2,7 +2,7 @@
 version: "3"
 tasks:
   ssh:
-    desc: Generate the ssh keys for the remote host
+    desc: Generate the ssh keys for the remote host [SSH_PORT=22]
     requires:
       vars:
         - TARGET
@@ -18,22 +18,23 @@ tasks:
       - echo "age key:"
       - ssh-to-age -i hosts/{{.HOSTNAME}}/ssh_host_ed25519_key.pub
   repo:
-    desc: Setup the nix-config repo for the remote host
+    desc: Setup the nix-config repo for the remote host [SSH_PORT=22]
     requires:
       vars:
         - TARGET
-        - HOSTNAME
     vars:
       TEMPDIR:
         sh: mktemp -d
       SSH_PORT: '{{.SSH_PORT | default "22"}}'
+    silent: true
     cmds:
       - mkdir {{.TEMPDIR}}/.nix-config
       - cp -r ./ {{.TEMPDIR}}/.nix-config
       - cd {{.TEMPDIR}}
       - cmd: git branch | grep --color=auto -v 'main' | grep --color=auto -v "$(git branch --show-current)" | xargs git branch -D
         ignore_error: true
-      - rsync -rz --exclude=result --exclude=.direnv --exclude=.pre-commit-config.yaml --rsh="ssh -oport={{.SSH_PORT}}" "{{.TEMPDIR}}/.nix-config" "{{.TARGET}}:~/"
+      - rsync -rz --delete --exclude=result --exclude=.direnv --exclude=.pre-commit-config.yaml --rsh="ssh -oport={{.SSH_PORT}}" "{{.TEMPDIR}}/.nix-config" "{{.TARGET}}:~/"
+      - echo "repo copied to {{.TARGET}} at ~/.nix-config"
   hardware:
     desc: Generate the facter json file for hardware configuration
     requires:
