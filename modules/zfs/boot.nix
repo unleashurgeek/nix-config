@@ -6,7 +6,20 @@
     utils,
     ...
   }: {
+    boot.kernelParams = [
+      "rd.systemd.debug_shell=1"
+    ];
+
     boot.initrd = {
+      network = {
+        ssh = {
+          enable = true;
+          port = 2222;
+          authorizedKeys = config.users.users.kyle.openssh.authorizedKeys.keys;
+        };
+      };
+      systemd.emergencyAccess = true;
+
       # /credstore is an ext4 filesystem that needs to be mounted
       supportedFilesystems.ext4 = true;
 

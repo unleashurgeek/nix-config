@@ -1,6 +1,18 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: "3"
 tasks:
+  generate:
+    desc: Generate ssh keys and hardware configuration for the remote host [SSH_PORT=22]
+    requires:
+      vars:
+        - TARGET
+        - HOSTNAME
+    vars:
+      SSH_PORT: '{{.SSH_PORT | default "22"}}'
+    silent: true
+    cmds:
+      - task: ssh
+      - task: hardware
   ssh:
     desc: Generate the ssh keys for the remote host [SSH_PORT=22]
     requires:
@@ -36,7 +48,7 @@ tasks:
       - rsync -rz --delete --exclude=result --exclude=.direnv --exclude=.pre-commit-config.yaml --rsh="ssh -oport={{.SSH_PORT}}" "{{.TEMPDIR}}/.nix-config" "{{.TARGET}}:~/"
       - echo "repo copied to {{.TARGET}} at ~/.nix-config"
   hardware:
-    desc: Generate the facter json file for hardware configuration
+    desc: Generate the facter json file for hardware configuration [SSH_PORT=22]
     requires:
       vars:
         - TARGET
@@ -69,16 +81,16 @@ tasks:
       - test -f {{.SSH_KEY}}.pub
       - test $(stat -c '%U' {{.SSH_KEY}}) = root
       - test $(stat -c '%a' {{.SSH_KEY}}) -eq 600
-    silent: true
     cmds:
       - echo "persisting ssh keys..."
-      - mkdir -p "/mnt/persist/etc/ssh"
-      - mv "{{.SSH_KEY}}" "/mnt/persist/etc/ssh/ssh_host_ed25519_key"
-      - mv "{{.SSH_KEY}}.pub" "/mnt/persist/etc/ssh/ssh_host_ed25519_key.pub"
+      - sudo mkdir -p "/mnt/persist/etc/ssh"
+      - sudo mv {{.SSH_KEY}} /mnt/persist/etc/ssh/ssh_host_ed25519_key
+      - sudo mv {{.SSH_KEY}}.pub /mnt/persist/etc/ssh/ssh_host_ed25519_key.pub
       - echo "Moving nix-config repo to user home..."
-      - mkdir -p "/mnt/persist/home/{{.USER}}"
-      - chown {{.UID}}:{{.UID}} "/mnt/persist/home/{{.USER}}"
-      - mv ../ "/mnt/persist/home/{{.USER}}/.nix-config"
+      - sudo mkdir -p /mnt/persist/home/{{.USER}}
+      - sudo chown {{.UID}}:{{.UID}} /mnt/persist/home/{{.USER}}
+      - cd ../
+      - mv .nix-config /mnt/persist/home/{{.USER}}/.nix-config
       - echo "Installing nixos..."
-      - echo "nixos-install --no-channel-copy --no-root-password --root '/mnt' --no-root-passwd --flake {{.NIX_CONFIG_DIR}}#{{.HOSTNAME}}"
+      - sudo nixos-install --no-channel-copy --no-root-password --root '/mnt' --flake {{.NIX_CONFIG_DIR}}#{{.HOSTNAME}}
       - echo "Installation complete..."
