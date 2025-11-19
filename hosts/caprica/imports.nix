@@ -3,11 +3,15 @@
     user-kyle
     zfs
     password-manager
+    desktop
+    development
   ];
 
   hosts.nixos.caprica.users = {
     kyle.modules = with config.flake.modules.homeManager; [
       user-kyle
+      desktop
+      development
     ];
   };
 }
