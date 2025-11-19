@@ -2,6 +2,7 @@
   flake.modules.homeManager.base = {
     programs.git = {
       enable = true;
+      lfs.enable = true;
       settings = {
         alias = {
           last = "log -1 HEAD --stat";
