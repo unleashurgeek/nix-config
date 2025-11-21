@@ -89,8 +89,7 @@
         };
 
         input = {
-          # rebind caps lock to hypr
-          kb_options = "caps:hypr";
+          kb_options = "caps:super";
           # mouse settings
           accel_profile = "flat";
           sensitivity = 0.0;
@@ -112,6 +111,9 @@
 
         bind = [
           "$MOD, T, exec, uwsm app -- kitty"
+
+          "$MOD, R, exec, walker"
+          "$MOD, C, exec, walker -m clipboard"
 
           "$MOD, Q, killactive"
           "$MODSHIFT, Q, exit"
