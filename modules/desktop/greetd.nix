@@ -2,6 +2,7 @@
   flake.modules.nixos.desktop = {
     lib,
     pkgs,
+    config,
     ...
   }: {
     services.greetd = {
