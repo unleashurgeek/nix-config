@@ -15,7 +15,5 @@
         };
       };
     };
-
-    preserve.system.directories = ["/var/cache/tuigreet"];
   };
 }
