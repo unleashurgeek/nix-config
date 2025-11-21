@@ -20,6 +20,7 @@
         userSettings = {
           "[nix]" = {
             "editor.defaultFormatter" = "jnoortheen.nix-ide";
+            "editor.formatOnSave" = true;
           };
           "editor.bracketPairColorization.enabled" = true;
           "editor.cursorSmoothCaretAnimation" = "on";
