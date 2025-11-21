@@ -1,0 +1,10 @@
+keys:
+  # hosts
+  - &caprica age1cljk5vcsfk46pnckfykkakk6htnwl8q7y6j9zcqd555etwmq4c7sdhnlf7
+  - &mars age1xs7l6em0q00ayqpnguctla9x27hrv36qc94fxjat8700myafdy5qcn9vpy
+creation_rules:
+  - path_regex: .*\.sops\.ya?ml$
+    key_groups:
+      - age:
+          - *caprica
+          - *mars
