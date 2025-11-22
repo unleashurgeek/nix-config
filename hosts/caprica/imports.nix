@@ -5,6 +5,7 @@
     desktop
     development
     messaging
+    browser
   ];
 
   hosts.nixos.caprica.users = {
@@ -13,6 +14,7 @@
       desktop
       development
       messaging
+      browser
     ];
   };
 }
