@@ -15,6 +15,14 @@
       XDG_SESSION_TYPE = "wayland";
     };
 
+    stylix.targets = {
+      gtk.enable = true;
+      hyprland.enable = true;
+      hyprland.hyprpaper.enable = true;
+      nixos-icons.enable = true;
+      qt.enable = true;
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       # package = null;
@@ -27,7 +35,10 @@
         "$MOD" = "SUPER";
 
         # startup programs
-        exec-once = [];
+        exec-once = [
+          "uwsm app -s s -- wl-paste --type text --watch cliphist store"
+          "uwsm app -s s -- wl-paste --type image --watch cliphist store"
+        ];
 
         ecosystem = {
           enforce_permissions = true;

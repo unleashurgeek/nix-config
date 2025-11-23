@@ -7,6 +7,9 @@
         xdg-desktop-portal-gtk
       ];
       configPackages = [pkgs.hyprland];
+      config.hyprland = {
+        "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
+      };
     };
 
     # User directories to preserve. Trying to keep a minimal set
