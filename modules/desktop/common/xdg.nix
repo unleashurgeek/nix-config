@@ -27,5 +27,17 @@
     # Enable the default user directories within home
     # Music, Videos, Desktop, Public, Pictures, Downloads, Documents, Templates
     xdg.userDirs.enable = true;
+
+    # Hide the following desktop entries. Never want to launch these from a launcher
+    xdg.desktopEntries = {
+      uuctl = {
+        name = "uuctl";
+        noDisplay = true;
+      };
+      micro = {
+        name = "micro";
+        noDisplay = true;
+      };
+    };
   };
 }
