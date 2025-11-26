@@ -1,0 +1,26 @@
+{inputs, ...}: {
+  flake.modules.nixos.desktop-dms = {};
+
+  flake.modules.homeManager.desktop-dms = {
+    imports = [inputs.dankMaterialShell.homeModules.dankMaterialShell.default];
+
+    programs.dankMaterialShell = {
+      enable = true;
+
+      systemd = {
+        enable = true;
+        restartIfChanged = true;
+      };
+
+      enableSystemMonitoring = true;
+      enableClipboard = true;
+      enableVPN = false;
+      enableBrightnessControl = false;
+      enableColorPicker = true;
+      enableDynamicTheming = true;
+      enableAudioWavelength = true;
+      enableCalendarEvents = false;
+      enableSystemSound = true;
+    };
+  };
+}

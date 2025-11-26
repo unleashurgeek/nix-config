@@ -1,5 +1,7 @@
 {
   hosts.nixos.caprica = {
+    environment = "dms";
+
     monitors = [
       {
         name = "DP-2";
