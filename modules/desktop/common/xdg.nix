@@ -46,6 +46,10 @@
         name = "qt6ct";
         noDisplay = true;
       };
+      kvantummanager = {
+        name = "kvantum";
+        noDisplay = true;
+      };
     };
   };
 }
