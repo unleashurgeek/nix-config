@@ -116,10 +116,7 @@
         };
 
         bind = [
-          "$MOD, T, exec, uwsm app -- kitty"
-
-          "$MOD, R, exec, walker"
-          "$MOD, C, exec, walker -m clipboard"
+          "$MOD, T, exec, app2unit -- ghostty"
 
           "$MOD, Q, killactive"
           "$MODSHIFT, Q, exit"
@@ -187,8 +184,5 @@
         submap = reset
       '';
     };
-
-    # TODO: temporary
-    programs.kitty.enable = true;
   };
 }
