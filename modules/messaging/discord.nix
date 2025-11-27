@@ -1,8 +1,8 @@
 {
-  flake.modules.homeManager.messaging = {pkgs, ...}: {
-    home.packages = with pkgs; [
-      vesktop
-    ];
+  flake.modules.homeManager.messaging = {
+    programs.vesktop = {
+      enable = true;
+    };
   };
 
   flake.modules.nixos.messaging = {

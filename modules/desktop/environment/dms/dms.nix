@@ -17,7 +17,7 @@
       enableVPN = false;
       enableBrightnessControl = false;
       enableColorPicker = true;
-      enableDynamicTheming = true;
+      enableDynamicTheming = false;
       enableAudioWavelength = true;
       enableCalendarEvents = false;
       enableSystemSound = true;
