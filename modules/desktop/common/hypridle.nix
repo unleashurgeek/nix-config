@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.desktop-hyprland = {
+  flake.modules.homeManager.desktop = {
     pkgs,
     lib,
     config,

@@ -1,10 +1,14 @@
 {
-  flake.modules.nixos.desktop-hyprland = {
+  flake.modules.nixos.desktop-hyprland = {pkgs, ...}: {
     programs.hyprland = {
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      app2unit
+    ];
   };
 
   flake.modules.homeManager.desktop-hyprland = {host, ...}: {
@@ -36,12 +40,6 @@
 
       settings = {
         "$MOD" = "SUPER";
-
-        # startup programs
-        exec-once = [
-          "uwsm app -s s -- wl-paste --type text --watch cliphist store"
-          "uwsm app -s s -- wl-paste --type image --watch cliphist store"
-        ];
 
         ecosystem = {
           enforce_permissions = true;
