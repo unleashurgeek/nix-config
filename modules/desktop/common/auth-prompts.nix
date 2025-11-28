@@ -1,7 +1,11 @@
 {
-  flake.modules.nixos.desktop = {pkgs, ...}: {
+  flake.modules.nixos.desktop = {
+    pkgs,
+    lib,
+    ...
+  }: {
     security.polkit.enable = true;
-    services.gnome.gnome-keyring.enable = true;
+    services.gnome.gnome-keyring.enable = lib.mkForce false;
 
     systemd = {
       user.services.polkit-gnome-authentication-agent-1 = {

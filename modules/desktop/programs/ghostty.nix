@@ -24,8 +24,9 @@
     # Bindings for Hyprland compositor
     wayland.windowManager.hyprland.settings = {
       bind = [
+        "$MOD, T, exec, app2unit -- ghostty"
         "$MOD, Return, exec, app2unit -- ghostty"
-        "ALT, Return, exec, app2unit -- ghostty --class=floating.ghostty"
+        "$MOD ALT, Return, exec, app2unit -- ghostty --class=floating.ghostty"
       ];
 
       windowrulev2 = [

@@ -1,5 +1,5 @@
 {
   flake.modules.nixos.gaming = {
-    hardware.xone.enable = false;
+    hardware.xone.enable = true;
   };
 }

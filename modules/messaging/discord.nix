@@ -7,7 +7,7 @@
     # Startup logic and window rules for hyprland compositor
     wayland.windowManager.hyprland.settings = {
       exec-once = [
-        "app2unit -- vesktop"
+        "sleep 1 && app2unit -- vesktop"
       ];
 
       windowrulev2 = [

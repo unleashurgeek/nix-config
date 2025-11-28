@@ -8,6 +8,7 @@ includes:
   build: .taskfiles/build/Taskfile.yaml
   bootstrap: .taskfiles/bootstrap/Taskfile.yaml
   diff: .taskfiles/diff/Taskfile.yaml
+  nix: .taskfiles/nix/Taskfile.yaml
 tasks:
   default:
     silent: true

@@ -11,6 +11,8 @@
 
     stylix = {
       autoEnable = false;
+      # TODO: temporary until stylix updates to 26.05
+      enableReleaseChecks = false;
     };
   };
 }

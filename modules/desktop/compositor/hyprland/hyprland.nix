@@ -27,8 +27,8 @@
       systemd.enable = false;
 
       settings = {
-        bindr = [
-          "$MOD, Super_L, exec, dms ipc call spotlight toggle"
+        bind = [
+          "$MOD, R, exec, dms ipc call spotlight toggle"
         ];
 
         layerrule = [

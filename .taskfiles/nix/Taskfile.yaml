@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+tasks:
+  check:
+    desc: Runs nix flake check against the repo
+    silent: true
+    cmds:
+      - nix flake check --option access-tokens "github.com=$(gh auth token)"
+  update:
+    silent: true
+    cmds:
+      - nix flake update --option access-tokens "github.com=$(gh auth token)"
+  fmt:
+    silent: true
+    cmds:
+      - nix fmt

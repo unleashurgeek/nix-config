@@ -16,7 +16,15 @@
   flake.modules.homeManager.desktop = {
     wayland.windowManager.hyprland.settings = {
       exec-once = [
-        "app2unit -s s -- 1password --silent"
+        "sleep 1 && app2unit -s s -- 1password --silent"
+      ];
+
+      windowrulev2 = [
+        "float, class:1password"
+      ];
+
+      bind = [
+        # "$MOD, T, exec, app2unit -- 1password --quick-access"
       ];
     };
   };

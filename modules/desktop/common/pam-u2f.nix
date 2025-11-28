@@ -26,11 +26,14 @@
         login.rules.auth.u2f = {
           control = lib.mkForce "sufficient";
         };
+        login.enableGnomeKeyring = lib.mkForce false;
+
         greetd.u2fAuth = true;
         greetd.rules.auth.u2f = {
           control = lib.mkForce "sufficient";
         };
         sudo.u2fAuth = true;
+        polkit-1.u2fAuth = true;
       };
     };
 
