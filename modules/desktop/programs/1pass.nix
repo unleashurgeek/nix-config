@@ -14,6 +14,17 @@
   };
 
   flake.modules.homeManager.desktop = {
+    # For desktop users, enable 1pass as the default SSH agent
+    # NOTE: the ssh agent needs to be manually started in the 1pass gui once
+    programs.ssh = {
+      matchBlocks = {
+        "*" = {
+          identityAgent = "~/.1password/agent.sock";
+        };
+      };
+    };
+
+    # Hyprland configuration options + bindings
     wayland.windowManager.hyprland.settings = {
       exec-once = [
         "sleep 1 && app2unit -s s -- 1password --silent"
@@ -24,7 +35,7 @@
       ];
 
       bind = [
-        # "$MOD, T, exec, app2unit -- 1password --quick-access"
+        "CTRL SHIFT, Space, exec, app2unit -- 1password --quick-access"
       ];
     };
   };

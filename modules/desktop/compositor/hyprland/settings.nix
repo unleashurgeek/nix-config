@@ -33,6 +33,11 @@
         no_update_news = true;
       };
 
+      # Enables the color management protocol for supporting HDR
+      experimental = {
+        xx_color_management_v4 = true;
+      };
+
       misc = {
         # Allow windows to steal focus
         focus_on_activate = false;
