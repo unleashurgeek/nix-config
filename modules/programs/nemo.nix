@@ -1,11 +1,11 @@
 {
-  flake.modules.nixos.desktop = {pkgs, ...}: {
+  flake.modules.nixos.programs = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       nemo-with-extensions
     ];
   };
 
-  flake.modules.homeManager.desktop = {pkgs, ...}: {
+  flake.modules.homeManager.programs = {pkgs, ...}: {
     programs.yazi = {
       enable = true;
       shellWrapperName = "y";

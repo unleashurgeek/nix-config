@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.desktop = {pkgs, ...}: {
+  flake.modules.homeManager.programs = {pkgs, ...}: {
     home.packages = with pkgs; [
       youtube-music
     ];
@@ -14,7 +14,7 @@
     };
   };
 
-  flake.modules.nixos.desktop = {
+  flake.modules.nixos.programs = {
     preserve.users.directories = [".config/YouTube Music"];
   };
 }

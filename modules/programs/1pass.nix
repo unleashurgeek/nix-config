@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.desktop = {
+  flake.modules.nixos.programs = {
     programs._1password-gui = {
       enable = true;
       polkitPolicyOwners = ["kyle"];
@@ -13,7 +13,7 @@
     ];
   };
 
-  flake.modules.homeManager.desktop = {
+  flake.modules.homeManager.programs = {
     # For desktop users, enable 1pass as the default SSH agent
     # NOTE: the ssh agent needs to be manually started in the 1pass gui once
     programs.ssh = {

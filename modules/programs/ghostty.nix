@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.desktop = {pkgs, ...}: {
+  flake.modules.nixos.programs = {pkgs, ...}: {
     xdg.terminal-exec = {
       enable = true;
       package = pkgs.xdg-terminal-exec;
@@ -19,7 +19,7 @@
     };
   };
 
-  flake.modules.homeManager.desktop = {
+  flake.modules.homeManager.programs = {
     programs.ghostty = {
       enable = true;
       settings = {

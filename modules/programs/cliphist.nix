@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.desktop = {pkgs, ...}: {
+  flake.modules.homeManager.programs = {pkgs, ...}: {
     # By default, cliphist db is persited at $XDG_CACHE_HOME/cliphist/db
     # not persisting it for now, meaning all clipboard history is lost on reboot
     services.cliphist = {

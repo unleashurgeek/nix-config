@@ -3,6 +3,7 @@
     user-kyle
     zfs
     desktop
+    programs
     development
     messaging
     browser
@@ -14,6 +15,7 @@
     kyle.modules = with config.flake.modules.homeManager; [
       user-kyle
       desktop
+      programs
       development
       messaging
       browser

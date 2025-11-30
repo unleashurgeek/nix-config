@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.desktop = {pkgs, ...}: {
+  flake.modules.homeManager.programs = {pkgs, ...}: {
     home.packages = with pkgs; [
       gimp
     ];
