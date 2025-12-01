@@ -47,19 +47,5 @@
         "x-scheme-handler/terminal" = "com.mitchellh.ghostty.desktop";
       };
     };
-
-    # Bindings for Hyprland compositor
-    wayland.windowManager.hyprland.settings = {
-      bind = [
-        "$MOD, T, exec, app2unit -- ghostty"
-        "$MOD, Return, exec, app2unit -- ghostty"
-        "$MOD ALT, Return, exec, app2unit -- ghostty --class=floating.ghostty"
-      ];
-
-      windowrulev2 = [
-        "float, class:floating.ghostty"
-        "size 1200 700, class:floating.ghostty"
-      ];
-    };
   };
 }

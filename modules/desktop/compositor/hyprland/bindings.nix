@@ -41,6 +41,12 @@
         "$MOD, P, pseudo,"
         "$MOD, G, togglegroup"
 
+        # Terminal launch actions (uses xdg-terminal-exec spec)
+        "$MOD, T, exec, xdg-terminal-exec"
+        "$MOD ALT, T, exec, xdg-terminal-exec --app-id=floating.terminal"
+        "$MOD, Return, exec, xdg-terminal-exec"
+        "$MOD ALT, Return, exec, xdg-terminal-exec --app-id=floating.terminal"
+
         # Scroll switch between workspaces on a monitor
         "$MOD, mouse_down, workspace, e+1"
         "$MOD, mouse_up, workspace, e-1"

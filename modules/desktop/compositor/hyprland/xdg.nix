@@ -8,6 +8,13 @@
       ];
       configPackages = [pkgs.hyprland];
       config.hyprland = {
+        default = [
+          "hyprland"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.OpenURI" = "gtk";
+        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+        "org.freedesktop.impl.portal.Print" = "gtk";
         "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
       };
     };

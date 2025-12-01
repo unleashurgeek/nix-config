@@ -13,7 +13,7 @@
     stylix.targets.yazi.enable = true;
 
     xdg.desktopEntries.nemo = {
-      name = "Nemo";
+      name = "File Manager";
       exec = "${pkgs.nemo-with-extensions}/bin/nemo";
       icon = "nemo";
       genericName = "File Manager";
